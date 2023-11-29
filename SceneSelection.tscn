@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw27xxx8hd3go"]
+
+[ext_resource type="Script" path="res://SceneSelection.gd" id="1_x7nfq"]
+[ext_resource type="Texture2D" uid="uid://q5uwv340i7lp" path="res://assets/main_menu/frieren2.jpg" id="2_b5v3t"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x7nfq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.654902)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b5v3t")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="main menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 113.0
+offset_right = 410.0
+offset_bottom = 226.0
+text = "Back"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 127.0
+offset_right = 624.0
+offset_bottom = 158.0
+text = "Scene 1"
+
+[connection signal="pressed" from="main menu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

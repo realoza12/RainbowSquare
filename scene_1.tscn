@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://573tn8euyq7i"]
+
+[ext_resource type="Script" path="res://Scene1.gd" id="1_lmiws"]
+[ext_resource type="Texture2D" uid="uid://cnt247s6cuiox" path="res://assets/Scene_1/bg1.png" id="2_k78g4"]
+[ext_resource type="Texture2D" uid="uid://bpry7i416n77l" path="res://assets/characters/frieren1.png" id="2_twuga"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nw2g"]
+size = Vector2(268, 404)
+
+[node name="Scene1" type="Node"]
+script = ExtResource("1_lmiws")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k78g4")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Frieren" type="Area2D" parent="Node2D"]
+position = Vector2(0, 2)
+
+[node name="FrierenImg" type="TextureRect" parent="Node2D/Frieren"]
+offset_left = 219.0
+offset_top = 119.0
+offset_right = 480.0
+offset_bottom = 539.0
+texture = ExtResource("2_twuga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Frieren"]
+position = Vector2(350, 326)
+shape = SubResource("RectangleShape2D_6nw2g")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main menu" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1029.0
+offset_top = 25.0
+offset_right = 1126.0
+offset_bottom = 56.0
+text = "main menu"
+
+[connection signal="pressed" from="Control/main menu" to="." method="_on_quit_pressed"]
