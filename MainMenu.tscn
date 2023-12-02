@@ -16,14 +16,14 @@ script = ExtResource("1_fnfmk")
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.235294)
 layout_mode = 2
-offset_left = 11.0
-offset_top = 60.0
-offset_right = 1101.0
-offset_bottom = 481.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1153.0
+offset_bottom = 645.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_si2aa")
-expand_mode = 2
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Main menu" type="MarginContainer" parent="."]
