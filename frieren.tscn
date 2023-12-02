@@ -1,0 +1,224 @@
+[gd_scene load_steps=15 format=3 uid="uid://0a18cn0v1od3"]
+
+[ext_resource type="Script" path="res://Frieren.gd" id="1_chirp"]
+[ext_resource type="Texture2D" uid="uid://cnb4jm5s47338" path="res://assets/characters/FrierenRig/left_hair.png" id="2_rdbxc"]
+[ext_resource type="Texture2D" uid="uid://d2borqnd443e8" path="res://assets/characters/FrierenRig/right_hari.png" id="3_q8xpe"]
+[ext_resource type="Texture2D" uid="uid://dnretkhwq15ri" path="res://assets/characters/FrierenRig/head.png" id="4_te10s"]
+[ext_resource type="Texture2D" uid="uid://cakbtnouggcbv" path="res://assets/characters/FrierenRig/right_arm.png" id="5_iav6s"]
+[ext_resource type="Texture2D" uid="uid://bu3t33d6xu4w1" path="res://assets/characters/FrierenRig/left_arm.png" id="6_jty34"]
+[ext_resource type="Texture2D" uid="uid://bp1xh702yrpqx" path="res://assets/characters/FrierenRig/left_feet.png" id="7_vytjh"]
+[ext_resource type="Texture2D" uid="uid://pflqnf7dxrd4" path="res://assets/characters/FrierenRig/right_feet.png" id="8_rcosf"]
+[ext_resource type="Texture2D" uid="uid://d2j7bumygwscu" path="res://assets/characters/FrierenRig/dress.png" id="9_h4ls3"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wxfwy"]
+a = Vector2(-45, 176)
+b = Vector2(-44, 212)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e3osr"]
+a = Vector2(69, 174)
+b = Vector2(70, 215)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ug0vf"]
+a = Vector2(-150, -63)
+b = Vector2(-86, -148)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p6wa6"]
+a = Vector2(113, -145)
+b = Vector2(177, -51)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ox8p1"]
+radius = 103.0
+height = 244.0
+
+[node name="Frieren" type="Node2D"]
+script = ExtResource("1_chirp")
+
+[node name="down" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="right_arm" type="TextureRect" parent="down"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.798
+anchor_top = 1.0
+anchor_right = 1.798
+anchor_bottom = 1.0
+offset_left = -307.92
+offset_top = -276.0
+offset_right = 204.08
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iav6s")
+
+[node name="left_arm" type="TextureRect" parent="down"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.142
+anchor_top = 1.0
+anchor_right = -1.142
+anchor_bottom = 1.0
+offset_left = -190.32
+offset_top = -276.0
+offset_right = 321.68
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_jty34")
+
+[node name="left_feet" type="RigidBody2D" parent="down"]
+mass = 100.0
+gravity_scale = 100.0
+linear_damp = 100.0
+angular_damp = 1000.0
+
+[node name="left_feet_texture" type="TextureRect" parent="down/left_feet"]
+anchors_preset = -1
+anchor_left = -1.116
+anchor_top = 4.155
+anchor_right = -1.116
+anchor_bottom = 4.155
+offset_left = -236.0
+offset_top = -236.0
+offset_right = 276.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_vytjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="down/left_feet"]
+shape = SubResource("SegmentShape2D_wxfwy")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="down/left_feet"]
+position = Vector2(0, -1)
+node_a = NodePath("../../../up/head")
+node_b = NodePath("..")
+bias = 0.9
+
+[node name="right_feet" type="RigidBody2D" parent="down"]
+mass = 100.0
+gravity_scale = 100.0
+linear_damp = 100.0
+angular_damp = 1000.0
+
+[node name="right_feet_texture" type="TextureRect" parent="down/right_feet"]
+anchors_preset = -1
+anchor_left = 1.745
+anchor_top = 4.261
+anchor_right = 1.745
+anchor_bottom = 4.261
+offset_left = -236.0
+offset_top = -236.0
+offset_right = 276.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(305, 410)
+texture = ExtResource("8_rcosf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="down/right_feet"]
+shape = SubResource("SegmentShape2D_e3osr")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="down/right_feet"]
+position = Vector2(0, -1)
+node_a = NodePath("../../../up/head")
+node_b = NodePath("..")
+bias = 0.9
+
+[node name="dress" type="TextureRect" parent="down"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -276.0
+offset_right = 256.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_h4ls3")
+
+[node name="up" type="Node2D" parent="."]
+metadata/_edit_use_anchors_ = true
+
+[node name="left_hair" type="RigidBody2D" parent="up"]
+mass = 10.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(-80, 0)
+gravity_scale = 100.0
+linear_damp = 10.0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="up/left_hair"]
+position = Vector2(-80, -153)
+node_a = NodePath("../../head")
+node_b = NodePath("..")
+bias = 0.9
+
+[node name="left_hair_texture" type="TextureRect" parent="up/left_hair"]
+anchors_preset = -1
+offset_left = -236.0
+offset_top = -236.0
+offset_right = 276.0
+offset_bottom = 276.0
+pivot_offset = Vector2(235, 236)
+texture = ExtResource("2_rdbxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up/left_hair"]
+shape = SubResource("SegmentShape2D_ug0vf")
+
+[node name="right_hair" type="RigidBody2D" parent="up"]
+mass = 10.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(99, 0)
+gravity_scale = 100.0
+linear_damp = 10.0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="up/right_hair"]
+position = Vector2(98.485, -154.1)
+node_a = NodePath("../../head")
+node_b = NodePath("..")
+bias = 0.9
+
+[node name="right_hair_texture" type="TextureRect" parent="up/right_hair"]
+anchors_preset = -1
+anchor_left = 2.619
+anchor_top = -3.844
+anchor_right = 2.619
+anchor_bottom = -3.844
+offset_left = -236.0
+offset_top = -236.0
+offset_right = 276.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_q8xpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up/right_hair"]
+shape = SubResource("SegmentShape2D_p6wa6")
+
+[node name="head" type="StaticBody2D" parent="up"]
+
+[node name="head_texture" type="TextureRect" parent="up/head"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -1.434
+anchor_right = 0.5
+anchor_bottom = -1.434
+offset_left = -236.0
+offset_top = -236.0
+offset_right = 276.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_te10s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up/head"]
+position = Vector2(13, -74)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ox8p1")
